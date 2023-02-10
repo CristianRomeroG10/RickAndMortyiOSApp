@@ -16,7 +16,6 @@ final class RMTabBarController: UITabBarController{
     }
     
     
-    
     private func setUpTabs(){
         let charactersVC = RMCharacterViewController()
         let locationVC = RMLocationViewController()
@@ -28,7 +27,7 @@ final class RMTabBarController: UITabBarController{
         episodeVC.title = "Episodes"
         settingsVC.title = "Settings"
         
-        charactersVC.navigationItem.largeTitleDisplayMode = .automatic
+        charactersVC.navigationItem.largeTitleDisplayMode = .always
         locationVC.navigationItem.largeTitleDisplayMode = .automatic
         episodeVC.navigationItem.largeTitleDisplayMode = .automatic
         settingsVC.navigationItem.largeTitleDisplayMode = .automatic
@@ -52,9 +51,9 @@ final class RMTabBarController: UITabBarController{
                                        image: UIImage(systemName: "gear"),
                                        tag: 4)
         
-        for nav in [nav1, nav2, nav3, nav4]{
+        /*for nav in [nav1, nav2, nav3, nav4]{
             nav.navigationBar.prefersLargeTitles = true
-        }
+        }*/
         
         setViewControllers(
             [nav1, nav2, nav3, nav4],
