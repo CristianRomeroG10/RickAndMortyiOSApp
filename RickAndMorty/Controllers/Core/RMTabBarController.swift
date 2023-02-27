@@ -17,6 +17,8 @@ final class RMTabBarController: UITabBarController{
     
     
     private func setUpTabs(){
+       
+        
         let charactersVC = RMCharacterViewController()
         let locationVC = RMLocationViewController()
         let episodeVC = RMEpisodeViewController()
