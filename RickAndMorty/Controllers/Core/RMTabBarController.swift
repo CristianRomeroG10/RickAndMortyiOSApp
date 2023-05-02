@@ -11,55 +11,53 @@ final class RMTabBarController: UITabBarController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        setUpTabs()
+        setUpViewControllers()
     }
     
     
-    private func setUpTabs(){
+    private func setUpViewControllers(){
        
-        
+        //MARK: Character
         let charactersVC = RMCharacterViewController()
+        let charactersNavigation = UINavigationController(rootViewController: charactersVC)
+        charactersNavigation.tabBarItem.title = "Characters"
+        charactersNavigation.tabBarItem.image = UIImage(systemName: "person.circle")
+        charactersNavigation.tabBarItem.selectedImage = UIImage(systemName: "person.circle.fill")
+        //MARK: Location
         let locationVC = RMLocationViewController()
+        let locationNavigation = UINavigationController(rootViewController: locationVC)
+        locationNavigation.tabBarItem.title = "Location"
+        locationNavigation.tabBarItem.image = UIImage(systemName: "globe.desk")
+        locationNavigation.tabBarItem.selectedImage = UIImage(systemName: "globe.desk.fill")
+        //MARK: Episode
         let episodeVC = RMEpisodeViewController()
+        let episodeNavigation = UINavigationController(rootViewController: episodeVC)
+        episodeNavigation.tabBarItem.title = "Episode"
+        episodeNavigation.tabBarItem.image = UIImage(systemName: "tv.circle")
+        episodeNavigation.tabBarItem.selectedImage = UIImage(systemName: "tv.circle.fill")
+        //MARK:Settings
         let settingsVC = RMSettingsViewController()
+        let settingsNavigation = UINavigationController(rootViewController: settingsVC)
+        settingsNavigation.tabBarItem.title = "Settings"
+        settingsNavigation.tabBarItem.image = UIImage(systemName: "gear.circle")
+        settingsNavigation.tabBarItem.selectedImage = UIImage(systemName: "gear.circle.fill")
         
         charactersVC.title = "Characters"
         locationVC.title = "Location"
         episodeVC.title = "Episodes"
         settingsVC.title = "Settings"
         
-        charactersVC.navigationItem.largeTitleDisplayMode = .always
-        locationVC.navigationItem.largeTitleDisplayMode = .automatic
-        episodeVC.navigationItem.largeTitleDisplayMode = .automatic
-        settingsVC.navigationItem.largeTitleDisplayMode = .automatic
         
         
-        let nav1 = UINavigationController(rootViewController: charactersVC)
-        let nav2 = UINavigationController(rootViewController: locationVC)
-        let nav3 = UINavigationController(rootViewController: episodeVC)
-        let nav4 = UINavigationController(rootViewController: settingsVC)
         
-        nav1.tabBarItem = UITabBarItem(title: "Characters",
-                                       image: UIImage(systemName: "person"),
-                                       tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Locations",
-                                       image: UIImage(systemName: "globe"),
-                                       tag: 2)
-        nav3.tabBarItem = UITabBarItem(title: "Episodes",
-                                       image: UIImage(systemName: "tv"),
-                                       tag: 3)
-        nav4.tabBarItem = UITabBarItem(title: "Settings",
-                                       image: UIImage(systemName: "gear"),
-                                       tag: 4)
         
-        for nav in [nav1, nav2, nav3, nav4]{
+        for nav in [charactersNavigation, locationNavigation, episodeNavigation, settingsNavigation]{
             nav.navigationBar.prefersLargeTitles = true
         }
         
-        setViewControllers(
-            [nav1, nav2, nav3, nav4],
-        animated: true)
+        let homeViewControllers: [UIViewController] = [charactersNavigation, locationNavigation, episodeNavigation, settingsNavigation]
+        self.viewControllers = homeViewControllers
+        self.selectedIndex = 0
     }
 
 
